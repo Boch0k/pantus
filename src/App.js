@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import data from './data';
+
 
 function App() {
+  const [ order, setOrder ] = useState("")
+  const jokeElements = data.map(joke => {
+    console.log(joke.place)
+    return (
+      <p>{joke.place}</p>
+    );
+  })
+  
+
+  const result = () => {
+    setOrder(jokeElements)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+        <div className='wrapper'>
+          <svg className='svgi' width="173" height="143" viewBox="0 0 173 143" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 20C0 8.95431 8.9543 0 20 0H153C164.046 0 173 8.9543 173 20V123C173 134.046 164.046 143 153 143H20C8.95431 143 0 134.046 0 123V20Z" fill="black"/>
+          <path d="M38.8125 96V51.2H47.6445L75.9965 84.672H74.4605C74.2472 83.264 74.0765 81.8987 73.9485 80.576C73.8205 79.2107 73.6925 77.8667 73.5645 76.544C73.4792 75.1787 73.3938 73.8133 73.3085 72.448C73.2658 71.04 73.2232 69.6107 73.1805 68.16C73.1805 66.6667 73.1805 65.088 73.1805 63.424V51.2H82.5885V96H73.6285L44.7645 62.208L46.9405 62.272C47.0685 63.8507 47.1965 65.3013 47.3245 66.624C47.4525 67.904 47.5805 69.0987 47.7085 70.208C47.8365 71.3173 47.9218 72.384 47.9645 73.408C48.0498 74.432 48.1138 75.4773 48.1565 76.544C48.1992 77.6107 48.2205 78.72 48.2205 79.872V96H38.8125ZM111.876 96L92.932 51.2H103.108L112.964 75.264C113.348 76.288 113.753 77.312 114.18 78.336C114.607 79.36 115.033 80.4267 115.46 81.536C115.887 82.6027 116.292 83.6693 116.676 84.736C117.06 85.8027 117.401 86.8907 117.7 88L115.652 88.064C116.079 86.656 116.548 85.2693 117.06 83.904C117.572 82.496 118.084 81.1093 118.596 79.744C119.151 78.336 119.727 76.864 120.324 75.328L129.604 51.2H139.78L120.9 96H111.876Z" fill="#E8FF58"/>
+          </svg>
+          <input placeholder='Введіть номер накладної' className='inputik'/>
+          <button className='btn' onClick={result}>Відстежити</button>
+        </div>
+        {order}
+        
+        
+     
+    
     </div>
   );
 }
